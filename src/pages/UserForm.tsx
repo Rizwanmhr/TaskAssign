@@ -1,5 +1,8 @@
 import React,{useState,useEffect} from 'react'
 import { Grid, TextField, Button,makeStyles} from "@material-ui/core";
+import EmployeeTable from './EmployeeTable'
+import {Container,Paper,Box,Typography,TableContainer,Table,TableBody,TableHead,TableRow,TableCell} from '@material-ui/core'
+// import useStyles from "./Table.style";
 const useStyles = makeStyles({
     field:{
         // marginTop:'20',
@@ -22,19 +25,19 @@ const UserForm = () => {
     });
   
     const [getData,setGetData] = useState<GetFullData[]>();
-    const getAllData = async () => {
-    try {
-     const res = await fetch('/employee');
-    const newData = await res.json();
-    console.log(newData);
-    setGetData(newData)
-    } catch (error) {
-      console.log(error)
-    }
-    }
-      useEffect(() => {
-        getAllData();
-      },[])
+    // const getAllData = async () => {
+    // try {
+    //  const res = await fetch('/employee');
+    // const newData = await res.json();
+    // console.log(newData);
+    // setGetData(newData)
+    // } catch (error) {
+    //   console.log(error)
+    // }
+    // }
+      // useEffect(() => {
+      //   getAllData();
+      // },[])
    
    
     let name,value;
@@ -151,30 +154,13 @@ body:JSON.stringify(user)
         Submit
         </Button>
         </form>
-        {
-          getData && getData.map(({name,email,phone,userId,designation,employeetype}) => {
-            // const {name,email,phone,userId,designation,employeetype} = currValue;
-            return(
-               <ul>
-                   <li>
-                   {userId}
-                    {name} 
-                    {email}
-                    {phone}
-                    {employeetype}
-                    {designation}
-                   </li>
-               </ul>
-            )
-            })
-        }
+        <EmployeeTable />
         </Grid>
         </Grid>
-        <Grid container justify='center'> 
-       <Grid item lg={10}>
+   
+          
            
-       </Grid>
-        </Grid>
+     
 
         </div>
         

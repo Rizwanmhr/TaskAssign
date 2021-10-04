@@ -19,8 +19,8 @@ export const SidebarData = [
     cName:'/nav-text'
 },
  {
-    title:"Create",
-    path:'/create',
+    title:"CreateTask",
+    path:'/createtask',
     icon:<BsPencilSquare />,
     cName:'/nav-text'
 },

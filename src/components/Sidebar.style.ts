@@ -7,7 +7,7 @@ side:{
     width:'250px',
     height:'100vh',
     backgroundColor:'#060b26',
-    alignItems:'center',
+    alignItems:'center'
 },
 }),
 );
