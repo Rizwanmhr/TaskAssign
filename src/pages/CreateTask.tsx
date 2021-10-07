@@ -1,37 +1,19 @@
 import React,{useState,useEffect} from 'react'
 import { Grid, TextField, Button,makeStyles} from "@material-ui/core";
 import TaskCard from './TaskCard'
-interface GetData {
-    name: string;
-    description: string;
-    status:string
-   
-  }
+import TaskDescription from './TaskDescription'
+//Manage Form
 const CreateTask = () => {
     const [assignTask, setAssignTask] = useState({
-        name:'',description:'',status:''
+        name:'',description:'',status:'',title:'',projects:'',userId:''
     })
-    const [getAllData,setGetAllData] = useState<GetData[]>();
-    // const GetAllData = async () => {
-    //     try {
-    //         const res = await fetch('/task');
-    //        const newData = await res.json();
-    //        console.log(newData);
-    //        setGetAllData(newData)
-    //        } catch (error) {
-    //          console.log(error)
-    //        }
-    // }
-    // useEffect(() => {
-    //     GetAllData()
-    // },[])
     let name,value;
     const handleTask = (e:any) => {
         name = e.target.name;
         value = e.target.value;
         setAssignTask({...assignTask,[name]:value})
     }
-    const getData = async (e:any) => {
+    const postData = async (e:any) => {
         e.preventDefault();
         console.log(assignTask)
         const res = await fetch('/task', {
@@ -52,10 +34,11 @@ const CreateTask = () => {
           
       }
     }
+    //Form input values
     return (
-        <div>
-        <Grid container justify='center'>
-    <Grid item lg={10}>
+    <div>
+    <Grid container justify='center'>
+    <Grid item xs={10}lg={10}>
     <form method='POST' noValidate autoComplete='off'>
     <TextField
     label="Name"
@@ -87,34 +70,50 @@ const CreateTask = () => {
     onChange={handleTask}
     fullWidth
     required
+    /> 
+       <TextField
+    label="User Id"
+    name='userId'
+    id='userId'
+    style={{color:'#060b26'}}
+    value={assignTask.userId}
+    onChange={handleTask}
+    fullWidth
+    required
+    /> 
+    <TextField
+    label="Projects"
+    name='projects'
+    id='projects'
+    style={{color:'#060b26'}}
+    value={assignTask.projects}
+    onChange={handleTask}
+    fullWidth
+    required
+    />
+     <TextField
+    label="Title"
+    name='title'
+    id='title'
+    style={{color:'#060b26'}}
+    value={assignTask.title}
+    onChange={handleTask}
+    fullWidth
+    required
     />
         <Button
         type='submit'
         style={{backgroundColor:'#060b26',color:'#fff'}}
         variant='contained'
-        onClick={getData}
+        onClick={postData}
         >
         Submit
         </Button>
     </form>
-    {
-        getAllData && getAllData.map(({name,description,status}) => {
-return(
-    <ul>
-        <li>
-              
-                    {name}
-                    {description}
-                    {status}
-                  
-        </li>
-    </ul>
-)
-        })
-    }
     </Grid>
     </Grid>
     <TaskCard />
+    <TaskDescription />
     </div>
     )
 }
