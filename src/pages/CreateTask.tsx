@@ -5,7 +5,7 @@ import TaskDescription from './TaskDescription'
 //Manage Form
 const CreateTask = () => {
     const [assignTask, setAssignTask] = useState({
-        name:'',description:'',status:'',title:'',projects:'',userId:''
+        name:'',description:'',status:'',title:'',projects:''
     })
     let name,value;
     const handleTask = (e:any) => {
@@ -40,6 +40,17 @@ const CreateTask = () => {
     <Grid container justify='center'>
     <Grid item xs={10}lg={10}>
     <form method='POST' noValidate autoComplete='off'>
+        
+     <TextField
+    label="Title"
+    name='title'
+    id='title'
+    style={{color:'#060b26'}}
+    value={assignTask.title}
+    onChange={handleTask}
+    fullWidth
+    required
+    />
     <TextField
     label="Name"
     name='name'
@@ -70,33 +81,13 @@ const CreateTask = () => {
     onChange={handleTask}
     fullWidth
     required
-    /> 
-       <TextField
-    label="User Id"
-    name='userId'
-    id='userId'
-    style={{color:'#060b26'}}
-    value={assignTask.userId}
-    onChange={handleTask}
-    fullWidth
-    required
-    /> 
+    />
     <TextField
     label="Projects"
     name='projects'
     id='projects'
     style={{color:'#060b26'}}
     value={assignTask.projects}
-    onChange={handleTask}
-    fullWidth
-    required
-    />
-     <TextField
-    label="Title"
-    name='title'
-    id='title'
-    style={{color:'#060b26'}}
-    value={assignTask.title}
     onChange={handleTask}
     fullWidth
     required

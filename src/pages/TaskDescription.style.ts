@@ -13,8 +13,9 @@ const useStyles = makeStyles((theme: Theme) =>
     },
     secinput:{
       width:'100%',
-      height:'70px',
-      marginTop:'1rem'
+      height:'100px',
+      marginTop:'1rem',
+   
     },
     plusbtn:{
       marginTop:'3rem'
@@ -36,6 +37,9 @@ const useStyles = makeStyles((theme: Theme) =>
 },
 userid:{
   marginTop:'1rem'
+},
+employee:{
+  marginTop:'6rem'
 }
    
 
